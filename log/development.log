@@ -1980,3 +1980,371 @@ FOREIGN KEY (`store_id`)
   ↳ /usr/local/bundle/bin/rake:23
   [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
   ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `app_dev` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `app_test` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (55.5ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (53.5ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('2170607220429020730', 0)[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateVersions (20180705191048)
+  [1m[35m (55.7ms)[0m  [1m[35mCREATE TABLE `versions` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `item_type` varchar(191) NOT NULL, `item_id` int NOT NULL, `event` varchar(255) NOT NULL, `whodunnit` varchar(255), `object` longtext, `created_at` datetime) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci[0m
+  ↳ db/migrate/20180705191048_create_versions.rb:12
+  [1m[35m (45.6ms)[0m  [1m[35mCREATE  INDEX `index_versions_on_item_type_and_item_id`  ON `versions` (`item_type`, `item_id`) [0m
+  ↳ db/migrate/20180705191048_create_versions.rb:34
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180705191048')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateSections (20190126131119)
+  [1m[35m (65.2ms)[0m  [1m[35mCREATE TABLE `sections` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `description` varchar(140) NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_sections_on_deleted_at`  (`deleted_at`))[0m
+  ↳ db/migrate/20190126131119_create_sections.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190126131119')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (11.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateProducts (20190126132001)
+  [1m[35m (78.2ms)[0m  [1m[35mCREATE TABLE `products` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `uuid` varchar(36) NOT NULL, `name` varchar(255) NOT NULL, `section_id` bigint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_section_id`  (`section_id`),  INDEX `index_products_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_55dc3a941d`
+FOREIGN KEY (`section_id`)
+  REFERENCES `sections` (`id`)
+)[0m
+  ↳ db/migrate/20190126132001_create_products.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Create (3.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190126132001')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateSuppliedProcuts (20190126140811)
+  [1m[35m (71.2ms)[0m  [1m[35mCREATE TABLE `supplied_procuts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `amount` int NOT NULL, `product_id` bigint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_supplied_procuts_on_product_id`  (`product_id`),  INDEX `index_supplied_procuts_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_1c77ca034f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+)[0m
+  ↳ db/migrate/20190126140811_create_supplied_procuts.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190126140811')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateDemandedProducts (20190126141620)
+  [1m[35m (71.1ms)[0m  [1m[35mCREATE TABLE `demanded_products` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `amount` int NOT NULL, `product_id` bigint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_demanded_products_on_product_id`  (`product_id`),  INDEX `index_demanded_products_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_77117a03fb`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+)[0m
+  ↳ db/migrate/20190126141620_create_demanded_products.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190126141620')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateStores (20190126142246)
+  [1m[35m (65.3ms)[0m  [1m[35mCREATE TABLE `stores` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(40) NOT NULL, `address` varchar(255) NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_stores_on_deleted_at`  (`deleted_at`))[0m
+  ↳ db/migrate/20190126142246_create_stores.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190126142246')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateDeliveryOrder (20190126142705)
+  [1m[35m (64.2ms)[0m  [1m[35mCREATE TABLE `delivery_orders` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `sequence_input` varchar(255) NOT NULL, `sequence_output` varchar(255) NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_delivery_orders_on_deleted_at`  (`deleted_at`))[0m
+  ↳ db/migrate/20190126142705_create_delivery_order.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190126142705')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateBoxDeliveries (20190126153304)
+  [1m[35m (71.7ms)[0m  [1m[35mCREATE TABLE `box_deliveries` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `amount` int NOT NULL, `store_id` bigint NOT NULL, `status` tinyint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_box_deliveries_on_store_id`  (`store_id`),  INDEX `index_box_deliveries_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_55c8cc99ef`
+FOREIGN KEY (`store_id`)
+  REFERENCES `stores` (`id`)
+)[0m
+  ↳ db/migrate/20190126153304_create_box_deliveries.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Create (2.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190126153304')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2019-01-26 15:49:37', '2019-01-26 15:49:37')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('2170607220429020730')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Started GET "/" for 172.21.0.1 at 2019-01-26 15:50:10 +0000
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.0/lib/rails/templates/rails/welcome/index.html.erb (4.1ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (2.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE `app_dev` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `app_test` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('2170607220429020730', 0)[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('2170607220429020730')[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (271.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS `app_dev`[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (4.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS `app_test`[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE DATABASE `app_dev` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE DATABASE `app_test` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS `box_deliveries` CASCADE[0m
+  ↳ db/schema.rb:15
+  [1m[35m (71.1ms)[0m  [1m[35mCREATE TABLE `box_deliveries` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `amount` int NOT NULL, `store_id` bigint NOT NULL, `status` tinyint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_box_deliveries_on_deleted_at`  (`deleted_at`),  INDEX `index_box_deliveries_on_store_id`  (`store_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS `delivery_orders` CASCADE[0m
+  ↳ db/schema.rb:26
+  [1m[35m (66.4ms)[0m  [1m[35mCREATE TABLE `delivery_orders` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `sequence_input` varchar(255) NOT NULL, `sequence_output` varchar(255) NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_delivery_orders_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:26
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS `demanded_products` CASCADE[0m
+  ↳ db/schema.rb:35
+  [1m[35m (75.0ms)[0m  [1m[35mCREATE TABLE `demanded_products` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `amount` int NOT NULL, `product_id` bigint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_demanded_products_on_deleted_at`  (`deleted_at`),  INDEX `index_demanded_products_on_product_id`  (`product_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:35
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS `products` CASCADE[0m
+  ↳ db/schema.rb:45
+  [1m[35m (72.8ms)[0m  [1m[35mCREATE TABLE `products` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `uuid` varchar(36) NOT NULL, `name` varchar(255) NOT NULL, `section_id` bigint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_deleted_at`  (`deleted_at`),  INDEX `index_products_on_section_id`  (`section_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:45
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS `sections` CASCADE[0m
+  ↳ db/schema.rb:56
+  [1m[35m (65.2ms)[0m  [1m[35mCREATE TABLE `sections` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `description` varchar(140) NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_sections_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS `stores` CASCADE[0m
+  ↳ db/schema.rb:65
+  [1m[35m (63.4ms)[0m  [1m[35mCREATE TABLE `stores` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(40) NOT NULL, `address` varchar(255) NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_stores_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:65
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS `supplied_procuts` CASCADE[0m
+  ↳ db/schema.rb:74
+  [1m[35m (72.6ms)[0m  [1m[35mCREATE TABLE `supplied_procuts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `amount` int NOT NULL, `product_id` bigint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_supplied_procuts_on_deleted_at`  (`deleted_at`),  INDEX `index_supplied_procuts_on_product_id`  (`product_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:74
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS `versions` CASCADE[0m
+  ↳ db/schema.rb:84
+  [1m[35m (65.9ms)[0m  [1m[35mCREATE TABLE `versions` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `item_type` varchar(191) NOT NULL, `item_id` int NOT NULL, `event` varchar(255) NOT NULL, `whodunnit` varchar(255), `object` longtext, `created_at` datetime,  INDEX `index_versions_on_item_type_and_item_id`  (`item_type`, `item_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4[0m
+  ↳ db/schema.rb:84
+  [1m[35m (151.4ms)[0m  [1m[35mALTER TABLE `box_deliveries` ADD CONSTRAINT `fk_rails_55c8cc99ef`
+FOREIGN KEY (`store_id`)
+  REFERENCES `stores` (`id`)
+[0m
+  ↳ db/schema.rb:94
+  [1m[35m (155.1ms)[0m  [1m[35mALTER TABLE `demanded_products` ADD CONSTRAINT `fk_rails_77117a03fb`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  ↳ db/schema.rb:95
+  [1m[35m (410.9ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_55dc3a941d`
+FOREIGN KEY (`section_id`)
+  REFERENCES `sections` (`id`)
+[0m
+  ↳ db/schema.rb:96
+  [1m[35m (153.9ms)[0m  [1m[35mALTER TABLE `supplied_procuts` ADD CONSTRAINT `fk_rails_1c77ca034f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  ↳ db/schema.rb:97
+  [1m[35m (57.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (4.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20190126153304)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (7.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20190126131119),
+(20190126140811),
+(20180705191048),
+(20190126142705),
+(20190126132001),
+(20190126142246),
+(20190126141620);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (66.4ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2019-01-26 22:31:29', '2019-01-26 22:31:29')[0m
+  ↳ db/schema.rb:13
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS `box_deliveries` CASCADE[0m
+  ↳ db/schema.rb:15
+  [1m[35m (71.4ms)[0m  [1m[35mCREATE TABLE `box_deliveries` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `amount` int NOT NULL, `store_id` bigint NOT NULL, `status` tinyint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_box_deliveries_on_deleted_at`  (`deleted_at`),  INDEX `index_box_deliveries_on_store_id`  (`store_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS `delivery_orders` CASCADE[0m
+  ↳ db/schema.rb:26
+  [1m[35m (64.9ms)[0m  [1m[35mCREATE TABLE `delivery_orders` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `sequence_input` varchar(255) NOT NULL, `sequence_output` varchar(255) NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_delivery_orders_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:26
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS `demanded_products` CASCADE[0m
+  ↳ db/schema.rb:35
+  [1m[35m (75.1ms)[0m  [1m[35mCREATE TABLE `demanded_products` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `amount` int NOT NULL, `product_id` bigint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_demanded_products_on_deleted_at`  (`deleted_at`),  INDEX `index_demanded_products_on_product_id`  (`product_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:35
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `products` CASCADE[0m
+  ↳ db/schema.rb:45
+  [1m[35m (72.6ms)[0m  [1m[35mCREATE TABLE `products` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `uuid` varchar(36) NOT NULL, `name` varchar(255) NOT NULL, `section_id` bigint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_deleted_at`  (`deleted_at`),  INDEX `index_products_on_section_id`  (`section_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:45
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS `sections` CASCADE[0m
+  ↳ db/schema.rb:56
+  [1m[35m (64.9ms)[0m  [1m[35mCREATE TABLE `sections` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `description` varchar(140) NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_sections_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS `stores` CASCADE[0m
+  ↳ db/schema.rb:65
+  [1m[35m (74.6ms)[0m  [1m[35mCREATE TABLE `stores` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(40) NOT NULL, `address` varchar(255) NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_stores_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:65
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS `supplied_procuts` CASCADE[0m
+  ↳ db/schema.rb:74
+  [1m[35m (75.0ms)[0m  [1m[35mCREATE TABLE `supplied_procuts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `amount` int NOT NULL, `product_id` bigint NOT NULL, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_supplied_procuts_on_deleted_at`  (`deleted_at`),  INDEX `index_supplied_procuts_on_product_id`  (`product_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  ↳ db/schema.rb:74
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS `versions` CASCADE[0m
+  ↳ db/schema.rb:84
+  [1m[35m (64.3ms)[0m  [1m[35mCREATE TABLE `versions` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `item_type` varchar(191) NOT NULL, `item_id` int NOT NULL, `event` varchar(255) NOT NULL, `whodunnit` varchar(255), `object` longtext, `created_at` datetime,  INDEX `index_versions_on_item_type_and_item_id`  (`item_type`, `item_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4[0m
+  ↳ db/schema.rb:84
+  [1m[35m (155.0ms)[0m  [1m[35mALTER TABLE `box_deliveries` ADD CONSTRAINT `fk_rails_55c8cc99ef`
+FOREIGN KEY (`store_id`)
+  REFERENCES `stores` (`id`)
+[0m
+  ↳ db/schema.rb:94
+  [1m[35m (157.1ms)[0m  [1m[35mALTER TABLE `demanded_products` ADD CONSTRAINT `fk_rails_77117a03fb`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  ↳ db/schema.rb:95
+  [1m[35m (154.5ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_55dc3a941d`
+FOREIGN KEY (`section_id`)
+  REFERENCES `sections` (`id`)
+[0m
+  ↳ db/schema.rb:96
+  [1m[35m (153.3ms)[0m  [1m[35mALTER TABLE `supplied_procuts` ADD CONSTRAINT `fk_rails_1c77ca034f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  ↳ db/schema.rb:97
+  [1m[35m (57.3ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20190126153304)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (7.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20190126131119),
+(20190126140811),
+(20180705191048),
+(20190126142705),
+(20190126132001),
+(20190126142246),
+(20190126141620);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (66.1ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (1.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2019-01-26 22:31:30', '2019-01-26 22:31:30')[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (2.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Update (1.4ms)[0m  [1m[33mUPDATE `ar_internal_metadata` SET `value` = 'test' WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mSection Load (0.9ms)[0m  [1m[34mSELECT  `sections`.* FROM `sections` WHERE `sections`.`deleted_at` IS NULL LIMIT 11[0m
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT  `products`.* FROM `products` WHERE `products`.`deleted_at` IS NULL ORDER BY `products`.`id` ASC LIMIT 1[0m
