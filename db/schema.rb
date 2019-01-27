@@ -45,7 +45,10 @@ ActiveRecord::Schema.define(version: 2019_01_26_153304) do
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
     t.string "name", null: false
-    t.bigint "section_id", null: false
+    t.bigint "section_id", default: 0
+    t.decimal "price", precision: 10, scale: 2, default: "0.0"
+    t.decimal "price_per_kilo", precision: 10, null: false
+    t.string "brand"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
