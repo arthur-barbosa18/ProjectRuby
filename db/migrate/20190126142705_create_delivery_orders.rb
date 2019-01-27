@@ -1,4 +1,4 @@
-class CreateDeliveryOrder < ActiveRecord::Migration[5.2]
+class CreateDeliveryOrders < ActiveRecord::Migration[5.2]
   def change
     create_table :delivery_orders do |t|
       t.string :sequence_input, null: false

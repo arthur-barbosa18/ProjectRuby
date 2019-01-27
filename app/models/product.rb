@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-
   acts_as_paranoid
   validates_as_paranoid
   has_paper_trail
@@ -8,10 +7,13 @@ class Product < ApplicationRecord
 
   validates :uuid, length: { maximum: 36 }
   validates :name, presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 0 }
-  validates :price_per_kilo, numericality: { greater_than_or_equal_to: 0 }
+  validates :price, :price_per_kilo, numericality: { greater_than_or_equal_to: 0 }
 
   after_initialize :generate_uuid
+
+  scope :by_id, ->(id) { where(id: id) }
+
+  private
 
   def generate_uuid
     self.uuid ||= SecureRandom.uuid

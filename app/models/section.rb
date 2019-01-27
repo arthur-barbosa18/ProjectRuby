@@ -6,6 +6,9 @@ class Section < ApplicationRecord
 
   validates :address, presence: true
   validates :name, length: { maximum: 140 }, presence: true
+
+  scope :by_id, ->(id) { where(id: id) }
+
 end
 
 # == Schema Information

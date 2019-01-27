@@ -6,6 +6,9 @@ class Store < ApplicationRecord
 
   validates :address, presence: true
   validates :name, length: { maximum: 40 }
+
+  scope :by_id, ->(id) { where(id: id) }
+  
 end
 
 # == Schema Information

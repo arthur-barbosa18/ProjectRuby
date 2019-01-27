@@ -74,14 +74,14 @@ ActiveRecord::Schema.define(version: 2019_01_26_153304) do
     t.index ["deleted_at"], name: "index_stores_on_deleted_at"
   end
 
-  create_table "supplied_procuts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "supplied_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "amount", null: false
     t.bigint "product_id", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_supplied_procuts_on_deleted_at"
-    t.index ["product_id"], name: "index_supplied_procuts_on_product_id"
+    t.index ["deleted_at"], name: "index_supplied_products_on_deleted_at"
+    t.index ["product_id"], name: "index_supplied_products_on_product_id"
   end
 
   create_table "versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -97,5 +97,5 @@ ActiveRecord::Schema.define(version: 2019_01_26_153304) do
   add_foreign_key "box_deliveries", "stores"
   add_foreign_key "demanded_products", "products"
   add_foreign_key "products", "sections"
-  add_foreign_key "supplied_procuts", "products"
+  add_foreign_key "supplied_products", "products"
 end
