@@ -15,21 +15,25 @@ gem 'puma', '~> 3.11'
 
 gem 'interactor', '~> 3.0'
 gem 'kaminari', '~> 1.1.1'
+gem 'active_model_serializers', require: true
 gem 'fast_jsonapi', '~> 1.2'
 gem 'responders', '~> 2.4.0'
 gem 'has_scope', '~> 0.7.2'
 gem 'acts_as_paranoid', '~> 0.6.0'
 gem 'paper_trail', '~> 9.1.1'
-gem 'enumerize', '>= 2.2' 
+gem 'enumerize', '>= 2.2'
+gem 'luhn', '~> 1.0', '>= 1.0.2'
+gem 'cancancan', '~> 2.0'
+gem 'jwt', '~> 2.1.0'
+gem 'rswag', '~> 2.0.3'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'brakeman', require: false
-  gem 'rswag', '~> 2.0.3'
   gem 'rspec_api_documentation', '~> 4.9.0'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails','~> 4.11.1'
   gem 'rails-controller-testing', '~> 1.0.2' 
   gem 'rubocop', require: false
 end

@@ -4,7 +4,7 @@ class Section < ApplicationRecord
   validates_as_paranoid
   has_paper_trail
 
-  validates :address, presence: true
+  validates :description, presence: true
   validates :name, length: { maximum: 140 }, presence: true
 
   scope :by_id, ->(id) { where(id: id) }
