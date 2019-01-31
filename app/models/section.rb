@@ -1,14 +1,14 @@
 class Section < ApplicationRecord
-
   acts_as_paranoid
   validates_as_paranoid
   has_paper_trail
+
+  has_many :products
 
   validates :description, presence: true
   validates :name, length: { maximum: 140 }, presence: true
 
   scope :by_id, ->(id) { where(id: id) }
-
 end
 
 # == Schema Information

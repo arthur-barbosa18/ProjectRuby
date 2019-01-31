@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-01-29T19:05:04+00:00">2019-01-29T19:05:04+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-01-29T23:09:49+00:00">2019-01-29T23:09:49+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">79.49%</span></span>
+    (<span class="covered_percent"><span class="red">56.76%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="green">
-         1.2
+       <span class="red">
+         0.58
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>9</b> files in total.
-    <b>117</b> relevant lines. 
-    <span class="green"><b>93</b> lines covered</span> and
-    <span class="red"><b>24</b> lines missed </span>
+    <b>8</b> files in total.
+    <b>111</b> relevant lines. 
+    <span class="green"><b>63</b> lines covered</span> and
+    <span class="red"><b>48</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -72,22 +72,22 @@
       
       <tr>
         <td class="strong"><a href="#49b6285b3887c5b362c1d098af16feb9ec4b591a" class="src_link" title="app/controllers/concerns/api_actions.rb">app/controllers/concerns/api_actions.rb</a></td>
-        <td class="green strong">91.67 %</td>
+        <td class="red strong">50.0 %</td>
         <td>20</td>
         <td>12</td>
-        <td>11</td>
-        <td>1</td>
-        <td>1.4</td>
+        <td>6</td>
+        <td>6</td>
+        <td>0.5</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#909a0d9104a2c2afd75b3259ac550d1db9dd6896" class="src_link" title="app/controllers/concerns/crud_actions.rb">app/controllers/concerns/crud_actions.rb</a></td>
-        <td class="red strong">65.67 %</td>
+        <td class="red strong">38.81 %</td>
         <td>119</td>
         <td>67</td>
-        <td>44</td>
-        <td>23</td>
-        <td>1.2</td>
+        <td>26</td>
+        <td>41</td>
+        <td>0.4</td>
       </tr>
       
       <tr>
@@ -111,16 +111,6 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#056289cd38b96f93ffdda478bab2d38195c6ce01" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>10</td>
-        <td>6</td>
-        <td>6</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
         <td class="strong"><a href="#c69b6e8c8bd7e064ae25964b2dc8dd983d4728f7" class="src_link" title="lib/application_responder.rb">lib/application_responder.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>8</td>
@@ -132,12 +122,12 @@
       
       <tr>
         <td class="strong"><a href="#a1f3c1f30c812eb28b0623d753bfd5eb3f0bf128" class="src_link" title="spec/models/section_spec.rb">spec/models/section_spec.rb</a></td>
-        <td class="green strong">100.0 %</td>
+        <td class="yellow strong">87.5 %</td>
         <td>15</td>
         <td>8</td>
-        <td>8</td>
-        <td>0</td>
-        <td>1.6</td>
+        <td>7</td>
+        <td>1</td>
+        <td>0.9</td>
       </tr>
       
     </tbody>
@@ -323,11 +313,11 @@
         <div class="source_table" id="49b6285b3887c5b362c1d098af16feb9ec4b591a">
   <div class="header">
     <h3>app/controllers/concerns/api_actions.rb</h3>
-    <h4><span class="green">91.67 %</span> covered</h4>
+    <h4><span class="red">50.0 %</span> covered</h4>
     <div>
       <b>12</b> relevant lines. 
-      <span class="green"><b>11</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <span class="green"><b>6</b> lines covered</span> and
+      <span class="red"><b>6</b> lines missed.</span>
     </div>
   </div>
   
@@ -388,26 +378,26 @@
           <code class="ruby">    def render_unprocessable(exception)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="10">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="10">
+          
           
           <code class="ruby">      data = exception.record if exception.respond_to?(:record)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="11">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="11">
+          
           
           <code class="ruby">      data = data.errors if data.present?</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="12">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="12">
+          
           
           <code class="ruby">      data ||= exception</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="13">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="13">
+          
           
           <code class="ruby">      render json: data, status: :unprocessable_entity</code>
         </li>
@@ -430,8 +420,8 @@
           <code class="ruby">    def render_not_found(exception)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="17">
-          <span class="hits">3</span>
+        <li class="missed" data-hits="0" data-linenumber="17">
+          
           
           <code class="ruby">      render json: { error: exception.message }, status: :not_found</code>
         </li>
@@ -462,11 +452,11 @@
         <div class="source_table" id="909a0d9104a2c2afd75b3259ac550d1db9dd6896">
   <div class="header">
     <h3>app/controllers/concerns/crud_actions.rb</h3>
-    <h4><span class="red">65.67 %</span> covered</h4>
+    <h4><span class="red">38.81 %</span> covered</h4>
     <div>
       <b>67</b> relevant lines. 
-      <span class="green"><b>44</b> lines covered</span> and
-      <span class="red"><b>23</b> lines missed.</span>
+      <span class="green"><b>26</b> lines covered</span> and
+      <span class="red"><b>41</b> lines missed.</span>
     </div>
   </div>
   
@@ -545,14 +535,14 @@
           <code class="ruby">    def index(options = {})</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="13">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="13">
+          
           
           <code class="ruby">      collection = collection(options[:base_scope])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="14">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="14">
+          
           
           <code class="ruby">      render_json(collection)</code>
         </li>
@@ -575,8 +565,8 @@
           <code class="ruby">    def show</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="18">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="18">
+          
           
           <code class="ruby">      render_json(resource)</code>
         </li>
@@ -599,20 +589,20 @@
           <code class="ruby">    def create</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="22">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="22">
+          
           
           <code class="ruby">      object = resource_class.new(create_params)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="23">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="23">
+          
           
           <code class="ruby">      render_json(object, :created) &amp;&amp; return if object.save!</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="24">
+          
           
           <code class="ruby">      raise(ActiveRecord::RecordInvalid, object) if object.errors.any?</code>
         </li>
@@ -635,14 +625,14 @@
           <code class="ruby">    def update</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="28">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="28">
+          
           
           <code class="ruby">      if resource.update(update_params)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="29">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="29">
+          
           
           <code class="ruby">        render_json(resource)</code>
         </li>
@@ -695,14 +685,14 @@
           <code class="ruby">    def destroy</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="38">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="38">
+          
           
           <code class="ruby">      if resource.destroy</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="39">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="39">
+          
           
           <code class="ruby">        render_json</code>
         </li>
@@ -791,14 +781,14 @@
           <code class="ruby">    def resource</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="54">
-          <span class="hits">3</span>
+        <li class="missed" data-hits="0" data-linenumber="54">
+          
           
           <code class="ruby">      @resource ||= instance_variable_get(&quot;@#{resource_name.downcase}&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="55">
-          <span class="hits">3</span>
+        <li class="missed" data-hits="0" data-linenumber="55">
+          
           
           <code class="ruby">      @resource ||= try_find_resource</code>
         </li>
@@ -839,20 +829,20 @@
           <code class="ruby">    def render_json(data = nil, status = :ok)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="62">
-          <span class="hits">5</span>
+        <li class="missed" data-hits="0" data-linenumber="62">
+          
           
           <code class="ruby">      json = resource_serializer.try(:new, data)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="63">
-          <span class="hits">5</span>
+        <li class="missed" data-hits="0" data-linenumber="63">
+          
           
           <code class="ruby">      json ||= data</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="64">
-          <span class="hits">5</span>
+        <li class="missed" data-hits="0" data-linenumber="64">
+          
           
           <code class="ruby">      render json: json, status: data.nil? ? :no_content : status</code>
         </li>
@@ -1031,8 +1021,8 @@
           <code class="ruby">    def resource_name</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="94">
-          <span class="hits">8</span>
+        <li class="missed" data-hits="0" data-linenumber="94">
+          
           
           <code class="ruby">      controller_name.classify</code>
         </li>
@@ -1055,14 +1045,14 @@
           <code class="ruby">    def resource_serializer</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="98">
-          <span class="hits">5</span>
+        <li class="missed" data-hits="0" data-linenumber="98">
+          
           
           <code class="ruby">      serializer = &quot;#{resource_name}Serializer&quot;</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="99">
-          <span class="hits">5</span>
+        <li class="missed" data-hits="0" data-linenumber="99">
+          
           
           <code class="ruby">      serializer.safe_constantize</code>
         </li>
@@ -1416,85 +1406,6 @@
 </div>
 
       
-        <div class="source_table" id="056289cd38b96f93ffdda478bab2d38195c6ce01">
-  <div class="header">
-    <h3>config/routes.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>6</b> relevant lines. 
-      <span class="green"><b>6</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">Rails.application.routes.draw do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  mount Rswag::Ui::Engine =&gt; &#39;/api-docs&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  mount Rswag::Api::Engine =&gt; &#39;/api-docs&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="4">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  namespace :api do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    namespace :v1 do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      resources :products</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="7">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="9">
-          
-          
-          <code class="ruby">  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="10">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-
-      
         <div class="source_table" id="c69b6e8c8bd7e064ae25964b2dc8dd983d4728f7">
   <div class="header">
     <h3>lib/application_responder.rb</h3>
@@ -1565,11 +1476,11 @@
         <div class="source_table" id="a1f3c1f30c812eb28b0623d753bfd5eb3f0bf128">
   <div class="header">
     <h3>spec/models/section_spec.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="yellow">87.5 %</span> covered</h4>
     <div>
       <b>8</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <span class="green"><b>7</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -1600,8 +1511,8 @@
           <code class="ruby">describe Section do</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="5">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
           
           <code class="ruby">  let(:section_instance) { build(:section) }</code>
         </li>
@@ -1618,8 +1529,8 @@
           <code class="ruby">  it &#39;has a valid factory&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="8">
+          
           
           <code class="ruby">    expect(section_instance).to be_valid</code>
         </li>
@@ -1642,14 +1553,14 @@
           <code class="ruby">  describe &#39;ActiveModel validations&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="12">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
           
           <code class="ruby">    it { expect(section_instance).to validate_presence_of(:description) }</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="13">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
           
           <code class="ruby">    it { expect(section_instance).to validate_presence_of(:name) }</code>
         </li>

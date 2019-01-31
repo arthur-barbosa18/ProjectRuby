@@ -4,6 +4,8 @@ class Store < ApplicationRecord
   validates_as_paranoid
   has_paper_trail
 
+  has_many :box_deliveries
+
   validates :address, presence: true
   validates :name, length: { maximum: 40 }
 

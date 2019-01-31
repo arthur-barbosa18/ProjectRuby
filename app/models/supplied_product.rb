@@ -4,7 +4,7 @@ class SuppliedProduct < ApplicationRecord
   validates_as_paranoid
   has_paper_trail
 
-  belongs_to :products
+  belongs_to :product
 
   validates :amount, presence: true
 
