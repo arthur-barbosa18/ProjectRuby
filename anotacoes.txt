@@ -1,0 +1,39 @@
+os gerentes de cada padaria realizarão o pedido
+que significa aparacer uma tabela com toda a lista de pedidos e quantidade
+
+
+**vou precisar de ir em cada um dos tabelas de cada uma das padarias e concatenar tudo para gerar a tabela abaixo
+====================================================================================================
+aí vai ter a lista de que cada padaria/fabrica vai poder dizer quanto eles vão ofertar daquele produto
+essa lista vai ser a junção de todos os produtos pedidos por cada padaria
+as colunas dessa tabela serão quantidade restante daquele pedido, quantidade ofertada
+
+quant quant_offer
+20    10
+
+
+vai ter botão de save ao final de cada tabela, para salvar aquelas informações no banco!
+aí no momento que ele clicar em salvar, a quantidade é subtraida pela quantidade ofertada
+
+** vou ter que pegar tudo que vai ser enviado (de fato a qntd produto em estoque que será enviado), o total e colocar para gerar a tabela abaixo, separando para cada loja
+========================================================================================================
+
+aí assim que ele sair da fabrica, vai ser gerada a linha de uma nova tabela, que será a tabela que as padarias
+conferirão o recebimento dos produtos
+aí vai ter uma lista com produtos, quantidade enviada, quantidade recebida (input text)
+
+**aí vai ser só salvar no banco, gerar rota e salvar no banco
+==========================================================================================================
+
+nas lojas que não fábricas terá o cadastro de caixas na tabela de caixas
+nas lojas sempre vai ser caixas pretas e quantidade (aí pode ser uma tabela com quantidade, tipo, destino)
+o tipo das caixas que saem da fabrica são diferentes, são as "caixas pretas"
+
+**vou poder selecionar mais de uma linha dessa tabela, converter para o formato que o programa que roda
+a roteirização aceita, e tratar os dados que são retornados para poder exibir para o usuario
+** também devo aprender a como mandar msg no whatsapp 
+
+
+=====================================================================================================
+
+salva as respostas do programa do Joao no banco, quando os motoristas entrarem no aplicativo, verão somente as rotas, os caminhos que devem fazer e as caixas que devem coletar em cada ponto
