@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_26_153304) do
   end
 
   create_table "demanded_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "amount", null: false
+    t.integer "amount", default: 0
     t.bigint "product_id", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -75,7 +75,8 @@ ActiveRecord::Schema.define(version: 2019_01_26_153304) do
   end
 
   create_table "supplied_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "amount", null: false
+    t.integer "demanded_amount", default: 0
+    t.integer "supplied_amount", default: 0
     t.bigint "product_id", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false

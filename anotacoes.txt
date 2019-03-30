@@ -1,4 +1,4 @@
-os gerentes de cada padaria realizarão o pedido
+y os gerentes de cada padaria realizarão o pedido
 que significa aparacer uma tabela com toda a lista de pedidos e quantidade
 
 
@@ -27,7 +27,7 @@ aí vai ter uma lista com produtos, quantidade enviada, quantidade recebida (inp
 
 nas lojas que não fábricas terá o cadastro de caixas na tabela de caixas
 nas lojas sempre vai ser caixas pretas e quantidade (aí pode ser uma tabela com quantidade, tipo, destino)
-o tipo das caixas que saem da fabrica são diferentes, são as "caixas pretas"
+o tipo das caixas que saem da fabrica são diferentes, são as "caixas brancas"
 
 **vou poder selecionar mais de uma linha dessa tabela, converter para o formato que o programa que roda
 a roteirização aceita, e tratar os dados que são retornados para poder exibir para o usuario
@@ -37,3 +37,39 @@ a roteirização aceita, e tratar os dados que são retornados para poder exibir
 =====================================================================================================
 
 salva as respostas do programa do Joao no banco, quando os motoristas entrarem no aplicativo, verão somente as rotas, os caminhos que devem fazer e as caixas que devem coletar em cada ponto
+
+
+
+
+
+1. toda vez que clicar em salvar a lista de pedidos demandados inciialmente, 
+deve atualizar a tabela de pedidos, com os itens dos pedidos demandados (colunas:
+id, user_id, nome_prod, qntd, qnt_offer), qnt_offer por default é zero,
+E deve-se colocar zero em todas as quantidades de todos os prods da tabela de pedidos demandados.
+
+(rotas: clicou em salvar, chama rota de post para criar a tabela de pedidos demandados, na real a tabela ja vai existir, só vai acrescentar uma linha a mais na tabela )
+
+2. Se ele clicar em salvar na tabela de pedidos (que é a junção de demandados de cada loja), vai subtrair a quantidade com quantidade_offer, se exisitir ainda quantidade, limpa o input text da quantidade que o cara quer ofertar, soma a quantidade de fato ja ofertada ate aquele instante, no entnato, se qntidade demandada for igual a zero, ja pode apagar a linha (pode deixar de exibir a linha)
+Salvar também em um dicionario o produto com quantidade e quem ta atendendo
+
+3. Depois que o cara gerar a tabela de demanda, gera automaticamente a tabela de recebidos, com quantidade esperada, nome, quantidade recebida (input de 0 até a quantidade). Para cada input de quantidade recebida, subtrai a quantidade pedida.
+
+4. tabela de caixas com quantidade, tipo e destino. Ela será usada logo após ter sido preenchido todas as caixas, aí vai o peão vai cadastrar as quantidades de caixas, o tipo delas e para onde elas vão. Na verdade, se for vinda da loja, sempre vai para a fábrica!
+Então eu posso ver pelo login, se for login de loja, deixa sempre ir para a fábrica (DESTINO FIXO)
+Se for fábrica, deixa destino como um input.
+
+
+
+
+
+
+toda vez que clicar em salvar nas tabelas, vai chamar um patch para atualizar aquelas informaçoes e logo em seguida triga também para poder montar a tabela de ofertados (que vai ter quantidade ainda pedida + input de quanto se quer ofertar daquele produto pedido )
+
+para poder acessar a tabela de pedidos:
+api/v1/gerentes/:gerente/pedidos
+
+para poder acessar a tabela de itens ja ofertados
+api/v1/ofertados
+
+aí na hora que o gerente clicar em salvar na tabela de ofertados vai atualizar (patch novamente)
+
