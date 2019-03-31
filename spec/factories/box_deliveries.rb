@@ -6,8 +6,8 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  amount     :integer          not null
+#  color      :integer          not null
 #  deleted_at :datetime
-#  status     :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  store_id   :bigint(8)        not null

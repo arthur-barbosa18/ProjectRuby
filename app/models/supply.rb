@@ -1,39 +1,38 @@
 class Supply < ApplicationRecord
-
   acts_as_paranoid
   validates_as_paranoid
   has_paper_trail
 
-  belongs_to :demanded_product
-
+  validates :demanded_initial, presence: true
   validates :demanded_amount, presence: true
-  validates :suplied_amount, presence: true
+  validates :demanded_amount, numericality: { greater_than_or_equal_to: 0 }
 
-  def fill_supply
-    DemandedProduct.all.each do | item |
-      Supply.create(demanded_product_id: item.id, demanded_amount: item.amount)    
-    end
+  before_update :fix_demanded_amount
+  #before_create :define_demanded_amount
+
+  private
+
+  def fix_demanded_amount
+    amount = demanded_amount - supplied_amount
+    self.demanded_amount = amount if amount > 0
+    self.demanded_amount = 0 if amount < 0
   end
+
 end
 
 # == Schema Information
 #
 # Table name: supplies
 #
-#  id                  :bigint(8)        not null, primary key
-#  deleted_at          :datetime
-#  demanded_amount     :integer          default(0)
-#  supplied_amount     :integer          default(0)
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  demanded_product_id :bigint(8)        not null
+#  id               :bigint(8)        not null, primary key
+#  deleted_at       :datetime
+#  demanded_amount  :integer          not null
+#  demanded_initial :integer          not null
+#  supplied_amount  :integer          default(0)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 # Indexes
 #
-#  index_supplies_on_deleted_at           (deleted_at)
-#  index_supplies_on_demanded_product_id  (demanded_product_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (demanded_product_id => demanded_products.id)
+#  index_supplies_on_deleted_at  (deleted_at)
 #

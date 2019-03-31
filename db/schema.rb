@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_26_153304) do
+ActiveRecord::Schema.define(version: 2019_03_31_182424) do
 
   create_table "box_deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "amount", null: false
     t.bigint "store_id", null: false
-    t.integer "status", limit: 1, null: false
+    t.integer "color", limit: 1, null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_26_153304) do
   end
 
   create_table "demanded_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "amount", default: 0
+    t.integer "amount", null: false
     t.bigint "product_id", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 2019_01_26_153304) do
     t.index ["section_id"], name: "index_products_on_section_id"
   end
 
+  create_table "received_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "demanded_product_id", null: false
+    t.integer "received_amount", default: 0
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_received_products_on_deleted_at"
+    t.index ["demanded_product_id"], name: "index_received_products_on_demanded_product_id"
+  end
+
   create_table "sections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", limit: 140, null: false
@@ -74,15 +84,14 @@ ActiveRecord::Schema.define(version: 2019_01_26_153304) do
     t.index ["deleted_at"], name: "index_stores_on_deleted_at"
   end
 
-  create_table "supplied_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "demanded_amount", default: 0
+  create_table "supplies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "demanded_initial", null: false
+    t.integer "demanded_amount", null: false
     t.integer "supplied_amount", default: 0
-    t.bigint "product_id", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_supplied_products_on_deleted_at"
-    t.index ["product_id"], name: "index_supplied_products_on_product_id"
+    t.index ["deleted_at"], name: "index_supplies_on_deleted_at"
   end
 
   create_table "versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -98,5 +107,5 @@ ActiveRecord::Schema.define(version: 2019_01_26_153304) do
   add_foreign_key "box_deliveries", "stores"
   add_foreign_key "demanded_products", "products"
   add_foreign_key "products", "sections"
-  add_foreign_key "supplied_products", "products"
+  add_foreign_key "received_products", "demanded_products"
 end

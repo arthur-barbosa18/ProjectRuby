@@ -1,21 +1,21 @@
 class BoxDelivery < ApplicationRecord
-
   acts_as_paranoid
   validates_as_paranoid
   has_paper_trail
 
-  DELIVERED = 1
-  NOT_DELIVERED = 2
+  extend Enumerize
 
-  enumerize :status, in: {
-    delivered: DELIVERED,
-    not_delivered: NOT_DELIVERED
-  }, default: :not_delivered, scope: :by_status
+  WHITE = 1
+  BLACK = 2
 
-  belongs_to :stores
+  enumerize :color, in: {
+    white: WHITE,
+    black: BLACK
+  }, scope: :by_color
 
-  validates :amount, :status, presence: true
+  belongs_to :store
 
+  validates :amount, :color, presence: true
 end
 
 # == Schema Information
@@ -24,8 +24,8 @@ end
 #
 #  id         :bigint(8)        not null, primary key
 #  amount     :integer          not null
+#  color      :integer          not null
 #  deleted_at :datetime
-#  status     :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  store_id   :bigint(8)        not null

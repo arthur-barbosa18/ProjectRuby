@@ -11,6 +11,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 5.2.0'
 gem 'puma', '~> 3.11'
 
+
 # App
 
 gem 'interactor', '~> 3.0'
