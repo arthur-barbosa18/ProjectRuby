@@ -1,21 +1,7 @@
-class DemandedProduct < ApplicationRecord
+class DemandedProductSerializer
+  include FastJsonapi::ObjectSerializer
 
-  acts_as_paranoid
-  validates_as_paranoid
-  has_paper_trail
-
-  belongs_to :product
-  has_many :supply
-  validates :amount, presence: true
-
-=begin  after_create :fill_supplied_product
-
-  def fill_supplied_product
-    Product.create(name: 'arroz', section_id: 1)
-    #Supply.create(demanded_product_id: self.id, demanded_amount: self.amount)
-    #SuppliedProduct.create(product_id: self.product_id, demanded_amount: self.amount)
-  end=end
-
+  attributes :product_id, :amount
 end
 
 # == Schema Information

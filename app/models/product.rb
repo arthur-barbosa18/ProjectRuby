@@ -5,7 +5,6 @@ class Product < ApplicationRecord
 
   belongs_to :section
   has_many :demanded_products
-  has_many :supplied_products
 
   validates :uuid, length: { maximum: 36 }
   validates :name, presence: true
