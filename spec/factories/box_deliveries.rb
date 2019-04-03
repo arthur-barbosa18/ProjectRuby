@@ -1,4 +1,10 @@
-
+FactoryBot.define do
+  factory :box_delivery do
+    amount { Random.new.rand(1..10) }
+    color {Random.new.rand(1..2)}
+    store_id {2}
+  end
+end
 
 # == Schema Information
 #

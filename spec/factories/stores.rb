@@ -1,4 +1,9 @@
-
+FactoryBot.define do
+  factory :store do
+    address { 'Rua dos boboz, numero zero' }
+    name { 'Loja 1' }
+  end
+end
 
 # == Schema Information
 #
