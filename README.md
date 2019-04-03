@@ -1,6 +1,5 @@
-# Rails Base
+# Rails
 
-Rails Base is the base Rails application template used at Lóovi.
 It's based on Rails 5 and Ruby 2.5.1
 
 ## Application Gems
@@ -94,5 +93,3 @@ git commit -am "Update README.md"
 TODO: deploy scripts
 
 ##
-
-[<img src="https://loovi.com.br/images/loovi.svg" width="100"/>](http://www.loovi.com.br)
