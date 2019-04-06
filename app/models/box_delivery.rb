@@ -17,15 +17,27 @@ class BoxDelivery < ApplicationRecord
 
   validates :amount, :color, presence: true
 
-  def generate_input_to_route(boxs)
-    res = boxs.sort_by {|item| item[:store_id]}
-    puts res.inspect
-  end
-    #boxs_white = boxs.count(color.white)
-   ## boxs_black = boxs.count(color.black)
-    #string_white = '#{boxs_white},#{color.white}'
+  def self.blablas(boxs)
+    #res = boxs.sort_by {|item| item[:store_id]}
+    
 
-  #end
+
+    lista = []
+    stores = Store.all
+    puts stores
+    count = 0
+    stores.each do |store|
+      boxs.each do |box|
+        if(box.store_id == store.id)
+          lista[count] << box.inspect
+        end
+      end
+      count = count + 1
+    end
+    puts lista
+    lista
+  end
+
 end
 
 # == Schema Information
