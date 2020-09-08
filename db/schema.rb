@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_182424) do
+ActiveRecord::Schema.define(version: 2020_09_07_230824) do
 
-  create_table "box_deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "box_deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "amount", null: false
     t.bigint "store_id", null: false
     t.integer "color", limit: 1, null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_182424) do
     t.index ["store_id"], name: "index_box_deliveries_on_store_id"
   end
 
-  create_table "delivery_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "delivery_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "sequence_input", null: false
     t.string "sequence_output", null: false
     t.datetime "deleted_at"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_182424) do
     t.index ["deleted_at"], name: "index_delivery_orders_on_deleted_at"
   end
 
-  create_table "demanded_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "demanded_products", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "amount", null: false
     t.bigint "product_id", null: false
     t.datetime "deleted_at"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_182424) do
     t.index ["product_id"], name: "index_demanded_products_on_product_id"
   end
 
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
     t.string "name", null: false
     t.bigint "section_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_182424) do
     t.index ["section_id"], name: "index_products_on_section_id"
   end
 
-  create_table "received_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "received_products", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "demanded_product_id", null: false
     t.integer "received_amount", default: 0
     t.datetime "deleted_at"
@@ -66,7 +66,18 @@ ActiveRecord::Schema.define(version: 2019_03_31_182424) do
     t.index ["demanded_product_id"], name: "index_received_products_on_demanded_product_id"
   end
 
-  create_table "sections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "sections", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", limit: 140, null: false
     t.datetime "deleted_at"
@@ -75,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_182424) do
     t.index ["deleted_at"], name: "index_sections_on_deleted_at"
   end
 
-  create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", limit: 40, null: false
     t.string "address", null: false
     t.datetime "deleted_at"
@@ -84,7 +95,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_182424) do
     t.index ["deleted_at"], name: "index_stores_on_deleted_at"
   end
 
-  create_table "supplies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "supplies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "demanded_initial", null: false
     t.integer "demanded_amount", null: false
     t.integer "supplied_amount", default: 0
@@ -92,6 +103,26 @@ ActiveRecord::Schema.define(version: 2019_03_31_182424) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_supplies_on_deleted_at"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_roles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   create_table "versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

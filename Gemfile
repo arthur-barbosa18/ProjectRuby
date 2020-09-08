@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.5.8'
 
 # Base
 gem 'bcrypt', '~> 3.1.7'
@@ -25,6 +25,8 @@ gem 'paper_trail', '~> 9.1.1'
 gem 'enumerize', '>= 2.2'
 gem 'luhn', '~> 1.0', '>= 1.0.2'
 gem 'cancancan', '~> 2.0'
+gem  'devise' 
+gem  'rolify'
 gem 'jwt', '~> 2.1.0'
 gem 'rswag', '~> 2.0.3'
 
@@ -44,7 +46,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
-  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rails-erd'
 end
 

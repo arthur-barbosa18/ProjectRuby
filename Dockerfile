@@ -17,8 +17,8 @@ RUN apk add --no-cache --update build-base \
                                 libxrender \
                                 libxext \
                                 libintl \
-                                libcrypto1.0 \
-                                libssl1.0 
+                                libcrypto1.1 \
+                                libssl1.1 
 
 RUN mkdir /app
 RUN gem env
