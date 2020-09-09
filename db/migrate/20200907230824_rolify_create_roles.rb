@@ -1,15 +1,19 @@
 class RolifyCreateRoles < ActiveRecord::Migration[5.2]
   def change
-    create_table(:roles) do |t|
+    create_table :roles do |t|
       t.string :name
       t.references :resource, :polymorphic => true
-
+      t.datetime :deleted_at, index: true
       t.timestamps
+
     end
 
     create_table(:users_roles, :id => false) do |t|
       t.references :user
       t.references :role
+      t.datetime :deleted_at, index: true
+      t.timestamps
+
     end
 
     add_index(:roles, :name)

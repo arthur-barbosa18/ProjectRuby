@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       end
       #resources :users
       resources :sections
+      resources :roles
       resources :demanded_products
       resources :supplies
       resources :box_deliveries

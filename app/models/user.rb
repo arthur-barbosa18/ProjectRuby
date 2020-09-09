@@ -7,6 +7,14 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  has_and_belongs_to_many :roles, :join_table => :users_roles
+  
+#  def initialize()
+
+#  def add_role(role)
+#    @roles << role
+#  end
 end
 
 # == Schema Information
@@ -14,6 +22,7 @@ end
 # Table name: users
 #
 #  id                     :bigint(8)        not null, primary key
+#  deleted_at             :datetime
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  remember_created_at    :datetime
@@ -24,6 +33,7 @@ end
 #
 # Indexes
 #
+#  index_users_on_deleted_at            (deleted_at)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
