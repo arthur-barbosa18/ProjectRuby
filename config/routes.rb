@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :products do
-        get 'products/:section_id', to: 'products#index_section'
+        get 'sections/:section_id', to: 'products#index_section'
       end
-      #resources :users
+      resources :users, only: [:add_role] do
+        post 'add_role', to: 'users#add_role'
+      end
       resources :sections
       resources :roles
       resources :demanded_products

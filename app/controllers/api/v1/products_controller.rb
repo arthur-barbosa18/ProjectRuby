@@ -11,14 +11,18 @@ module Api
                                         :uuid, :brand, :section_id)
       end
 
-      def index_section
-        products = Products.by_section(params[:section_id])
-        if products
-          render json: resource_serializer.new(products)
-        else
-          render_unprocessable(procuts)
-        end
-      end
+
+      has_scope :by_section
+#      def index_section
+#        products = resource.by_section(params[:section_id])
+#        puts products
+#        if products
+#          render json: resource_serializer.new(products)
+#        else
+#          render_unprocessable(procuts)
+#        end
+#      end
+
     end
   end
 end

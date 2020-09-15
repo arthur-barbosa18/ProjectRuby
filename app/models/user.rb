@@ -5,10 +5,17 @@ class User < ApplicationRecord
   #validates_as_paranoid
   #has_paper_trail
 
+  rolify
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_and_belongs_to_many :roles, :join_table => :users_roles
+
+ def add_role(role)
+   errors.add(:roles, :already_role) if roles.include? role
+   raise(ActiveRecord::RecordInvalid, self) if errors.any?
+   roles << role
+ end
   
 #  def initialize()
 

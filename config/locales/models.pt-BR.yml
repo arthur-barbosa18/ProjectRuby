@@ -6,3 +6,7 @@ pt-BR:
           attributes:
             demanded_amount:
               less_than_zero: 'Quantidade demandada já é menor do que zero'
+        user:
+          attributes:
+            roles:
+              already_role: "O usuário já tem esse papel"
