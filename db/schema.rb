@@ -2,110 +2,60 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_182424) do
+ActiveRecord::Schema.define(version: 2021_05_15_024315) do
 
-  create_table "box_deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "amount", null: false
-    t.bigint "store_id", null: false
-    t.integer "color", limit: 1, null: false
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_box_deliveries_on_deleted_at"
-    t.index ["store_id"], name: "index_box_deliveries_on_store_id"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
-  create_table "delivery_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "sequence_input", null: false
-    t.string "sequence_output", null: false
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_delivery_orders_on_deleted_at"
-  end
-
-  create_table "demanded_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "amount", null: false
-    t.bigint "product_id", null: false
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_demanded_products_on_deleted_at"
-    t.index ["product_id"], name: "index_demanded_products_on_product_id"
-  end
-
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "uuid", limit: 36, null: false
+  create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "section_id"
-    t.decimal "price", precision: 10, scale: 2, default: "0.0"
-    t.decimal "price_per_kilo", precision: 10, default: "0"
-    t.string "brand"
-    t.datetime "deleted_at"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_products_on_deleted_at"
-    t.index ["section_id"], name: "index_products_on_section_id"
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "received_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "demanded_product_id", null: false
-    t.integer "received_amount", default: 0
-    t.datetime "deleted_at"
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_received_products_on_deleted_at"
-    t.index ["demanded_product_id"], name: "index_received_products_on_demanded_product_id"
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "sections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "providers", force: :cascade do |t|
     t.string "name", null: false
-    t.string "description", limit: 140, null: false
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_sections_on_deleted_at"
+    t.decimal "ticket_price", null: false
   end
 
-  create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 40, null: false
-    t.string "address", null: false
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_stores_on_deleted_at"
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.decimal "cashback", null: false
+    t.string "email"
   end
 
-  create_table "supplies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "demanded_initial", null: false
-    t.integer "demanded_amount", null: false
-    t.integer "supplied_amount", default: 0
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_supplies_on_deleted_at"
-  end
-
-  create_table "versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "item_type", limit: 191, null: false
-    t.integer "item_id", null: false
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
     t.string "event", null: false
     t.string "whodunnit"
-    t.text "object", limit: 4294967295
+    t.text "object"
     t.datetime "created_at"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  add_foreign_key "box_deliveries", "stores"
-  add_foreign_key "demanded_products", "products"
-  add_foreign_key "products", "sections"
-  add_foreign_key "received_products", "demanded_products"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

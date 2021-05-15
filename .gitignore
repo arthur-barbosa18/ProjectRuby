@@ -13,7 +13,7 @@ log
 /log/*
 tmp
 *.tmp
-/tmp/*
+tmp/*
 !/log/.keep
 !/tmp/.keep
 /.env

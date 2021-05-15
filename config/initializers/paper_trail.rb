@@ -1,1 +1,5 @@
-PaperTrail.config.track_associations = false
+module PaperTrail
+  class Version < ActiveRecord::Base
+    include PaperTrail::VersionConcern
+  end
+end

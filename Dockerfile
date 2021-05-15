@@ -1,4 +1,4 @@
-FROM ruby:2.5-alpine
+FROM ruby:2.7.0-alpine
 
 RUN apk add --no-cache --update build-base \
                                 linux-headers \
@@ -17,8 +17,13 @@ RUN apk add --no-cache --update build-base \
                                 libxrender \
                                 libxext \
                                 libintl \
-                                libcrypto1.0 \
-                                libssl1.0 
+                                zlib \
+                                zlib-dev \
+                                libressl \
+                                postgresql-dev
+                                #libressl-dev \
+                                # libssl1.0
+
 
 RUN mkdir /app
 RUN gem env

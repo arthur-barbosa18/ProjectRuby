@@ -1,16 +1,18 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.7.0'
 
 # Base
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+gem "pg", ">= 0.18", "< 2.0"
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.3'
 gem 'puma', '~> 3.11'
 
+#install apt-get install postgres-server-dev-{pg.version}
+#sudo apt-get install postgresql
 
 # App
 
@@ -18,10 +20,10 @@ gem 'interactor', '~> 3.0'
 gem 'kaminari', '~> 1.1.1'
 gem 'active_model_serializers', require: true
 gem 'fast_jsonapi', '~> 1.2'
-gem 'responders', '~> 2.4.0'
+gem 'responders', '~> 3.0.0'
 gem 'has_scope', '~> 0.7.2'
 gem 'acts_as_paranoid', '~> 0.6.0'
-gem 'paper_trail', '~> 9.1.1'
+gem 'paper_trail', '~> 11.1.0'
 gem 'enumerize', '>= 2.2'
 gem 'luhn', '~> 1.0', '>= 1.0.2'
 gem 'cancancan', '~> 2.0'

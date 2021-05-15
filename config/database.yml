@@ -10,13 +10,14 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("MYSQL_ROOT_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("MYSQL_ROOT_PASSWORD") { 'root' } %>
-  host: <%= ENV.fetch("MYSQL_HOST") { 'mysql' } %>
-  database: testss
+  username: <%= ENV.fetch("POSTGRES_USER") { 'postgres' } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { 'password' } %>
+  host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
+  port: <%= ENV.fetch("POSTGRES_port") { '5432' } %>
+  database: tests
 
 development:
   <<: *default
